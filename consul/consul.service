@@ -1,6 +1,6 @@
 [Unit]
 Description=Consul
-Documentation=https://nomadproject.io/docs/
+Documentation=https://consul.io/docs/
 Requires=network-online.target
 After=network-online.target
 
