@@ -1,0 +1,39 @@
+---
+- hosts: all
+
+  tasks:
+
+    # Zip
+    - apt: name=zip=3.0-11
+
+    # Nomad
+    - unarchive: src=https://releases.hashicorp.com/nomad/0.4.1/nomad_0.4.1_linux_amd64.zip
+                 copy=no dest=/usr/local/bin creates=/usr/local/bin/nomad
+    - file: path=/etc/nomad.d state=directory owner=root group=root mode=0755
+    - template: src=nomad/nomad.json.j2 dest=/etc/nomad.d/nomad.json owner=root group=root mode=0644
+    - copy: src=nomad/nomad.service dest=/lib/systemd/system/nomad.service owner=root group=root mode=0644
+    - service: name=nomad state=started enabled=yes
+
+    # Consul
+    - unarchive: src=https://releases.hashicorp.com/consul/0.7.0/consul_0.7.0_linux_amd64.zip
+                 copy=no dest=/usr/local/bin creates=/usr/local/bin/consul
+    - file: path=/etc/consul.d state=directory owner=root group=root mode=0755
+    - template: src=consul/consul.json.j2 dest=/etc/consul.d/consul.json owner=root group=root mode=0644
+    - copy: src=consul/consul.service dest=/lib/systemd/system/consul.service owner=root group=root mode=0644
+    - service: name=consul state=started enabled=yes
+
+
+- hosts: nomad1,nomad2,nomad3
+
+  tasks:
+
+    # OpenJDK
+    - apt: name=openjdk-8-jre=8u91-b14-3ubuntu1~16.04.1
+
+    # Docker
+    - group: name=docker
+    - user: name=vagrant groups=docker append=yes
+    - apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
+    - apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+    - apt: name=docker-engine=1.12.1-0~xenial
+    - service: name=docker state=started enabled=yes

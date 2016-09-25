@@ -1,0 +1,15 @@
+[Unit]
+Description=Consul
+Documentation=https://nomadproject.io/docs/
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/consul agent -config-dir /etc/consul.d
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+KillSignal=SIGINT
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
