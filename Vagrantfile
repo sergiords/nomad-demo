@@ -38,7 +38,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'ansible' do |ansible|
     ansible.sudo = true
-    ansible.playbook = 'playbook.yml'
+    ansible.playbook = 'ansible/playbook.yml'
     ansible.host_vars = nodes
     ansible.extra_vars = {:server_ip => "#{server_ip}"}
   end
