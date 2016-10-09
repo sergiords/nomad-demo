@@ -13,10 +13,10 @@ job "demo-service" {
     task "app" {
       driver = "java"
       artifact {
-        source = "http://192.168.99.1:8080/nomad-app/target/nomad-app-1.0-service.jar"
+        source = "http://192.168.99.1:8080/demo/demo-service/target/demo-service-1.0-exec.jar"
       }
       config {
-        jar_path = "local/nomad-app-1.0-service.jar"
+        jar_path = "local/demo-service-1.0-exec.jar"
         args = []
         jvm_options = [
           "-Xmx${NOMAD_MEMORY_LIMIT}m",
