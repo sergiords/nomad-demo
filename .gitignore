@@ -1,2 +1,4 @@
 .vagrant
 .idea
+node_modules
+downloads
