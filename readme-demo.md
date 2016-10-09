@@ -10,16 +10,26 @@ npm install http-server
 ./node_modules/.bin/http-server .
 ```
 
+## Start httpd
+**ONLINE**
+```sh
+docker pull httpd:2.4.23-alpine
+```
+**OFFLINE**
+```sh
+docker run --rm --name httpd -p 80:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4.23-alpine
+```
+
 ## Start haproxy
 **ONLINE**
 ```sh
-docker pull haproxy:1.6.9 -alpine
+docker pull haproxy:1.6.9-alpine
 ```
 **OFFLINE**
 ```sh
 consul-template -consul 192.168.99.100:8500 -template="demo/haproxy.cfg.ctmpl:/tmp/haproxy.cfg:docker kill -s HUP haproxy"
 consul-template -consul 192.168.99.100:8500 -template="demo/haproxy.cfg.ctmpl:/tmp/haproxy.cfg"
-docker run --rm --name haproxy -p 8000:80 -p 9000:9200 -v /tmp/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro haproxy:1.6.9-alpine
+docker run --rm --name haproxy -p 8000:8000 -p 9000:9000 -v /tmp/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro haproxy:1.6.9-alpine
 ```
 
 ## Start service
