@@ -5,7 +5,8 @@
   "client_addr": "{{ node_ip }}",
 {% if server_ip == node_ip %}
   "server": true,
-  "bootstrap_expect": 1
+  "bootstrap_expect": 1,
+  "ui": true
 {% else %}
   "server": false,
   "start_join": ["{{ server_ip }}"],
