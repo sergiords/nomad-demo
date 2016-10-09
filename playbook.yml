@@ -22,7 +22,6 @@
     - copy: src=consul/consul.service dest=/lib/systemd/system/consul.service owner=root group=root mode=0644
     - service: name=consul state=started enabled=yes
 
-
 - hosts: nomad1,nomad2,nomad3
 
   tasks:

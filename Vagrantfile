@@ -7,19 +7,11 @@ Vagrant.configure(2) do |config|
   config.vm.box_version = '2.2.9'
   config.vm.box_check_update = false
 
-  config.vm.provider 'virtualbox' do |vb|
-    vb.gui = true
-    vb.cpus = '1'
-    vb.memory = '512'
-  end
-
-  server_ip = '192.168.99.100'
-
   nodes = {
-      :nomad0 => {:node_ip => "#{server_ip}"},
-      :nomad1 => {:node_ip => '192.168.99.101'},
-      :nomad2 => {:node_ip => '192.168.99.102'},
-      :nomad3 => {:node_ip => '192.168.99.103'}
+      :nomad0 => {:node_ip => '192.168.99.100'}, # Server
+      :nomad1 => {:node_ip => '192.168.99.101'}, # Client 1
+      :nomad2 => {:node_ip => '192.168.99.102'}, # Client 2
+      :nomad3 => {:node_ip => '192.168.99.103'}, # Client 3
   }
 
   nodes.each do |node_name, node_entry|
@@ -30,6 +22,8 @@ Vagrant.configure(2) do |config|
       node.vm.network 'private_network', ip: "#{node_entry[:node_ip]}"
       node.vm.provider 'virtualbox' do |vb|
         vb.name = "#{node_name}"
+        vb.cpus = '1'
+        vb.memory = '512'
       end
 
     end
@@ -38,9 +32,9 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'ansible' do |ansible|
     ansible.sudo = true
-    ansible.playbook = 'ansible/playbook.yml'
+    ansible.playbook = 'playbook.yml'
     ansible.host_vars = nodes
-    ansible.extra_vars = {:server_ip => "#{server_ip}"}
+    ansible.extra_vars = {:server_ip => "#{nodes[:nomad0][:node_ip]}"}
   end
 
 end
