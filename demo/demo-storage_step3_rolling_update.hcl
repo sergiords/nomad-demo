@@ -1,14 +1,10 @@
 job "demo-storage" {
-  region = "global"
   datacenters = [
     "dc1"
   ]
   type = "service"
-  constraint {
-    distinct_hosts = true
-  }
   update {
-    stagger = "5s"
+    stagger = "10s" # delay between instances update
     max_parallel = 1
   }
   group "group" {
@@ -16,12 +12,12 @@ job "demo-storage" {
     task "app" {
       driver = "docker"
       artifact {
-        source = "http://192.168.99.1:8080/downloads/elasticsearch-2.3.5.tar"
+        source = "http://192.168.99.1:8080/downloads/elasticsearch-2.4.1.tar"
       }
       config {
-        image = "elasticsearch:2.3.5"
+        image = "elasticsearch:2.4.1"
         load = [
-          "elasticsearch-2.3.5.tar"
+          "elasticsearch-2.4.1.tar"
         ]
         command = "elasticsearch"
         args = [
@@ -43,6 +39,9 @@ job "demo-storage" {
           interval = "10s"
           timeout = "2s"
         }
+      }
+      constraint {
+        distinct_hosts = true
       }
       resources {
         cpu = 50
