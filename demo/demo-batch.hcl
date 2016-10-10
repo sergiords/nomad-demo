@@ -1,11 +1,10 @@
 job "demo-batch" {
-  region = "global"
   datacenters = [
     "dc1"
   ]
   type = "batch"
   periodic {
-    cron = "*/10 * * * * * *"
+    cron = "*/15 * * * * * *"
     prohibit_overlap = true
   }
   task "app" {
