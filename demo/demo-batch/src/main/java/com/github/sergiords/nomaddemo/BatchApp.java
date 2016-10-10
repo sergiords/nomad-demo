@@ -18,7 +18,7 @@ public class BatchApp {
 
         System.out.println("Sending request from " + nodeName);
 
-        String response = CLIENT.target("http://192.168.99.1:8000/") // haproxy
+        String response = CLIENT.target("http://192.168.99.1:8080/")
                 .path("hello")
                 .queryParam("from", nodeName)
                 .request().get(String.class);
