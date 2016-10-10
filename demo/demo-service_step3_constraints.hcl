@@ -1,15 +1,9 @@
 job "demo-service" {
-  region = "global"
   datacenters = [
     "dc1"
   ]
   type = "service"
-  update {
-    stagger = "5s"
-    max_parallel = 1
-  }
   group "group" {
-    count = 1
     task "app" {
       driver = "java"
       artifact {
@@ -17,7 +11,6 @@ job "demo-service" {
       }
       config {
         jar_path = "local/demo-service-1.0-exec.jar"
-        args = []
         jvm_options = [
           "-Xmx${NOMAD_MEMORY_LIMIT}m",
           "-Dnode.name=${node.unique.name}"
@@ -32,6 +25,14 @@ job "demo-service" {
           interval = "10s"
           timeout = "2s"
         }
+      }
+      constraint {
+        attribute = "${node.unique.name}"
+        value = "nomad1"
+      }
+      logs {
+        max_files = 5
+        max_file_size = 10
       }
       resources {
         cpu = 50
