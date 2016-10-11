@@ -32,10 +32,6 @@ job "demo-service" {
           timeout = "2s"
         }
       }
-      constraint {
-        attribute = "${node.unique.name}"
-        value = "nomad1"
-      }
       resources {
         cpu = 50
         memory = 128
