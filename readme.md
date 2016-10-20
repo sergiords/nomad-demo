@@ -106,3 +106,18 @@ docker pull iverberk/nomad-ui
 ```sh
 docker run -e NOMAD_ADDR=http://192.168.99.100:4646 -p 3000:3000 iverberk/nomad-ui
 ```
+
+## Start Fabio
+
+[Fabio UI](http://192.168.99.1:9998/)
+
+[Load Balancer](http://192.168.99.1:9999/hello)
+
+**ONLINE**
+```sh
+docker pull magiconair/fabio
+```
+**OFFLINE**
+```sh
+docker run -p 9999:9999 -p 9998:9998 -v $PWD/demo/fabio.properties:/etc/fabio/fabio.properties magiconair/fabio
+```

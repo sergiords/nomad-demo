@@ -25,6 +25,7 @@ job "demo-service" {
       service {
         name = "demo-service"
         port = "http"
+        tags = ["urlprefix-/hello"]
         check {
           type = "http"
           path = "/hello?from=consul"
