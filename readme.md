@@ -62,7 +62,9 @@ mvn clean install
 **OFFLINE**
 ```sh
 mvn clean install
-nomad run demo/demo-service.hcl
+nomad run demo/demo-service_step1.hcl
+nomad run demo/demo-service_step2_services.hcl
+nomad run demo/demo-service_step3_restart.hcl
 ```
 
 ## Start batch
@@ -86,7 +88,10 @@ docker save elasticsearch:2.4.1 > downloads/elasticsearch-2.4.1.tar
 ```
 **OFFLINE**
 ```sh
-nomad run demo/demo-storage.hcl
+nomad run demo/demo-storage_step1.hcl
+nomad run demo/demo-storage_step2_scaleup.hcl
+nomad run demo/demo-storage_step3_rolling_update.hcl
+nomad run demo/demo-storage_step4_blue_green.hcl
 ```
 
 ## Start UI
