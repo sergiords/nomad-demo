@@ -57,11 +57,11 @@ docker run --rm --name haproxy -p 8000:8000 -p 9000:9000 -v /tmp/haproxy.cfg:/us
 ## Start service
 **ONLINE**
 ```sh
-mvn clean install
+mvn clean install -f demo/demo-service
 ```
 **OFFLINE**
 ```sh
-mvn clean install
+mvn clean install -f demo/demo-service
 nomad run demo/demo-service_step1.hcl
 nomad run demo/demo-service_step2_services.hcl
 nomad run demo/demo-service_step3_restart.hcl
@@ -70,11 +70,11 @@ nomad run demo/demo-service_step3_restart.hcl
 ## Start batch
 **ONLINE**
 ```sh
-mvn clean install
+mvn clean install -f demo/demo-batch
 ```
 **OFFLINE**
 ```sh
-mvn clean install
+mvn clean install -f demo/demo-batch
 nomad run demo/demo-batch.hcl
 ```
 
