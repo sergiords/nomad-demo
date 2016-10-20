@@ -119,5 +119,5 @@ docker pull magiconair/fabio
 ```
 **OFFLINE**
 ```sh
-docker run -p 9999:9999 -p 9998:9998 -v $PWD/demo/fabio.properties:/etc/fabio/fabio.properties magiconair/fabio
+docker run -e registry_consul_addr=192.168.99.100:8500 -e registry_consul_register_addr=192.168.99.1:9998 -p 9999:9999 -p 9998:9998 magiconair/fabio
 ```
