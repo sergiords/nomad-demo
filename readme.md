@@ -94,7 +94,10 @@ nomad run demo/demo-storage_step3_rolling_update.hcl
 nomad run demo/demo-storage_step4_blue_green.hcl
 ```
 
-## Start UI
+## Start Nomad UI
+
+[Nomad UI](http://192.168.99.1:3000)
+
 **ONLINE**
 ```sh
 docker pull iverberk/nomad-ui
