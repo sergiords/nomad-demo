@@ -113,11 +113,12 @@ nomad run demo/demo-storage_step4_blue_green.hcl
 
 **ONLINE**
 ```sh
-docker pull iverberk/nomad-ui
+docker pull iverberk/nomad-ui:v0.2.1
+docker save iverberk/nomad-ui:v0.2.1 > downloads/nomad-ui-v0.2.1.tar
 ```
 **OFFLINE**
 ```sh
-docker run -e NOMAD_ADDR=http://192.168.99.100:4646 -p 3000:3000 iverberk/nomad-ui
+docker run -e NOMAD_ADDR=http://192.168.99.100:4646 -p 3000:3000 iverberk/nomad-ui:v0.2.1
 ```
 
 ## Start Fabio
