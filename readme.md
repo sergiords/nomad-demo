@@ -129,9 +129,10 @@ docker run -e NOMAD_ADDR=http://192.168.99.100:4646 -p 3000:3000 iverberk/nomad-
 
 **ONLINE**
 ```sh
-docker pull magiconair/fabio
+docker pull magiconair/fabio:1.3.4-go1.7.3
+docker save magiconair/fabio:1.3.4-go1.7.3 > downloads/fabio-1.3.4-go1.7.3.tar
 ```
 **OFFLINE**
 ```sh
-docker run -e registry_consul_addr=192.168.99.100:8500 -e registry_consul_register_addr=192.168.99.1:9998 -p 9999:9999 -p 9998:9998 magiconair/fabio
+docker run -e registry_consul_addr=192.168.99.100:8500 -e registry_consul_register_addr=192.168.99.1:9998 -p 9999:9999 -p 9998:9998 magiconair/fabio:1.3.4-go1.7.3
 ```
