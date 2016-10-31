@@ -24,6 +24,17 @@ vagrant up nomad2             # start client 2
 vagrant up nomad3             # start client 3
 ```
 
+## Snapshots
+Save snapshot for step0
+```sh
+vagrant snapshot save step0
+```
+Restore snapshot for step0
+```sh
+vagrant halt
+vagrant snapshot restore step0
+```
+
 ## Start http server
 **ONLINE**
 ```sh
