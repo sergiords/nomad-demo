@@ -3,6 +3,8 @@
 ## Software versions
 - VirtualBox: **5.0.26r108824**
 - Vagrant: **1.8.5**
+- Ansible: **2.1.1.0**
+- Maven: **3.3.9**
 - Consul: **0.7.0**
 - Consul-template: **0.16.0**
 - Nomad: **0.4.1**
