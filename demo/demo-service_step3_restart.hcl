@@ -5,9 +5,9 @@ job "demo-service" {
   type = "service"
   group "group" {
     restart {
-      interval = "1m" # interval of failures
+      interval = "5m" # interval of failures
       attempts = 2    # restarts allowed in interval
-      delay = "15s"   # delay before restarting
+      delay = "5s"   # delay before restarting
       mode = "delay"  # delay or fail
     }
     task "app" {
