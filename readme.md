@@ -118,5 +118,6 @@ docker save magiconair/fabio:1.3.4-go1.7.3 > downloads/fabio-1.3.4-go1.7.3.tar
 ```
 **OFFLINE**
 ```sh
-docker run -e registry_consul_addr=192.168.99.100:8500 -e registry_consul_register_addr=192.168.99.1:9998 -p 9999:9999 -p 9998:9998 magiconair/fabio:1.3.4-go1.7.3
+nomad run demo/demo-router/step1_job.hcl
+nomad run demo/demo-router/step2_constraint.hcl
 ```
