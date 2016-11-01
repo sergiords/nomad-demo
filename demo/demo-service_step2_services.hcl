@@ -27,17 +27,13 @@ job "demo-service" {
           timeout = "2s"
         }
       }
-      constraint {
-        attribute = "${node.unique.name}"
-        value = "nomad1"
-      }
       logs {
         max_files = 5
         max_file_size = 10
       }
       resources {
         cpu = 50
-        memory = 128
+        memory = 200
         disk = 1000
         network {
           mbits = 100

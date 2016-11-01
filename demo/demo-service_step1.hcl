@@ -17,14 +17,6 @@ job "demo-service" {
         ]
       }
       resources {
-        cpu = 50
-        memory = 128
-        disk = 1000
-        network {
-          mbits = 100
-          port "http" {
-          }
-        }
       }
     }
   }

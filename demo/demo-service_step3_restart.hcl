@@ -5,10 +5,10 @@ job "demo-service" {
   type = "service"
   group "group" {
     restart {
-      attempts = 15
-      delay = "5s" # before restarting
-      interval = "24h" # interval of failures
-      mode = "delay" # delay or fail
+      interval = "1m" # interval of failures
+      attempts = 2    # restarts allowed in interval
+      delay = "15s"   # delay before restarting
+      mode = "delay"  # delay or fail
     }
     task "app" {
       driver = "java"
@@ -35,7 +35,7 @@ job "demo-service" {
       }
       resources {
         cpu = 50
-        memory = 128
+        memory = 200
         disk = 1000
         network {
           mbits = 100
