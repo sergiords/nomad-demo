@@ -47,12 +47,19 @@ npm install http-server
 
 ## Start service
 **ONLINE**
+
+Package version **1.0**
 ```sh
-mvn clean install -f demo/demo-service
+mvn clean package -f demo/demo-service
+```
+
+Package version **2.0**
+```sh
+mvn versions:set -f demo/demo-service -DnewVersion=2.0
+mvn clean package -f demo/demo-service
 ```
 **OFFLINE**
 ```sh
-mvn clean install -f demo/demo-service
 nomad run demo/demo-service_step1.hcl
 nomad run demo/demo-service_step2_services.hcl
 nomad run demo/demo-service_step3_restart.hcl
