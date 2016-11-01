@@ -45,16 +45,6 @@ npm install http-server
 ./node_modules/.bin/http-server .
 ```
 
-## Start httpd
-**ONLINE**
-```sh
-docker pull httpd:2.4.23-alpine
-```
-**OFFLINE**
-```sh
-docker run --rm --name httpd -p 80:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4.23-alpine
-```
-
 ## Start service
 **ONLINE**
 ```sh
