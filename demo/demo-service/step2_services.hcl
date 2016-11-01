@@ -31,6 +31,10 @@ job "demo-service" {
         max_files = 5
         max_file_size = 10
       }
+      constraint {
+        attribute = "${node.unique.name}"
+        value = "nomad2"
+      }
       resources {
         cpu = 50
         memory = 200
