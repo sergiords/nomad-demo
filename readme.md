@@ -68,12 +68,11 @@ nomad run demo/demo-service_step3_restart.hcl
 ## Start batch
 **ONLINE**
 ```sh
-mvn clean install -f demo/demo-batch
+mvn clean package -f demo/demo-batch
 ```
 **OFFLINE**
 ```sh
-mvn clean install -f demo/demo-batch
-nomad run demo/demo-batch.hcl
+nomad run demo/demo-batch/step1_job.hcl
 ```
 
 ## Start storage
