@@ -60,9 +60,12 @@ mvn clean package -f demo/demo-service
 ```
 **OFFLINE**
 ```sh
-nomad run demo/demo-service_step1.hcl
-nomad run demo/demo-service_step2_services.hcl
-nomad run demo/demo-service_step3_restart.hcl
+nomad run demo/demo-service/step1_job.hcl
+nomad run demo/demo-service/step2_services.hcl
+nomad run demo/demo-service/step3_restart.hcl
+nomad run demo/demo-service/step4_scale.hcl
+nomad run demo/demo-service/step5_rolling_update.hcl
+nomad run demo/demo-service/step6_blue_green.hcl
 ```
 
 ## Start batch
