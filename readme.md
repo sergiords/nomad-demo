@@ -25,14 +25,14 @@ vagrant up nomad3             # start client 3
 ```
 
 ## Snapshots
-Save snapshot for step0
+Save snapshot of initial state
 ```sh
-vagrant snapshot save step0
+vagrant snapshot save init
 ```
-Restore snapshot for step0
+Restore snapshot of initial state
 ```sh
 vagrant halt
-vagrant snapshot restore step0
+vagrant snapshot restore init
 ```
 
 ## Start http server
