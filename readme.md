@@ -88,10 +88,10 @@ docker save elasticsearch:2.4.1 > downloads/elasticsearch-2.4.1.tar
 ```
 **OFFLINE**
 ```sh
-nomad run demo/demo-storage_step1.hcl
-nomad run demo/demo-storage_step2_scaleup.hcl
-nomad run demo/demo-storage_step3_rolling_update.hcl
-nomad run demo/demo-storage_step4_blue_green.hcl
+nomad run demo/demo-storage/step1_job.hcl
+nomad run demo/demo-storage/step2_scale.hcl
+nomad run demo/demo-storage/step3_rolling_update.hcl
+nomad run demo/demo-storage/step4_blue_green.hcl
 ```
 
 ## Start Nomad UI
