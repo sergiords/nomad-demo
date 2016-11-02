@@ -2,7 +2,7 @@ job "demo-router" {
   datacenters = [
     "dc1"
   ]
-  type = "service"
+  type = "service" # service or batch
   group "group" {
     task "app" {
       driver = "docker"
