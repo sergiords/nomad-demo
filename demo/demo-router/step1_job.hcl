@@ -24,6 +24,10 @@ job "demo-router" {
         registry_consul_register_enabled = false
         proxy_strategy = "rr" # "rr" for round-robin or "rnd" for pseudo-random
       }
+      logs {
+        max_files = 5
+        max_file_size = 10
+      }
       service {
         name = "demo-router"
         port = "admin"
