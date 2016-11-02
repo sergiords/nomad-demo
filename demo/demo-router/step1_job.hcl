@@ -21,8 +21,18 @@ job "demo-router" {
       }
       env {
         registry_consul_addr = "${NOMAD_IP_http}:8500"
-        registry_consul_register_addr = "${NOMAD_IP_admin}:${NOMAD_HOST_PORT_admin}"
-        registry_consul_register_name = "demo-router"
+        registry_consul_register_enabled = false
+        proxy_strategy = "rr" # "rr" for round-robin or "rnd" for pseudo-random
+      }
+      service {
+        name = "demo-router"
+        port = "admin"
+        check {
+          type = "http"
+          path = "/health"
+          interval = "10s"
+          timeout = "2s"
+        }
       }
       constraint {
         attribute = "${node.unique.name}"
