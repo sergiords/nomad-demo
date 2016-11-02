@@ -24,12 +24,21 @@ job "demo-router" {
         registry_consul_register_addr = "${NOMAD_IP_admin}:${NOMAD_HOST_PORT_admin}"
         registry_consul_register_name = "demo-router"
       }
+      constraint {
+        attribute = "${node.unique.name}"
+        value = "nomad1"
+      }
       resources {
+        cpu = 50
+        memory = 200
+        disk = 1000
         network {
           mbits = 10
           port "http" {
+            static = 80
           }
           port "admin" {
+            static = 9998
           }
         }
       }
